@@ -21,6 +21,7 @@
 
 package com.shatteredpixel.shatteredpixeldungeon.actors.buffs;
 
+import com.shatteredpixel.shatteredpixeldungeon.actors.Char;
 import com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero;
 import com.shatteredpixel.shatteredpixeldungeon.messages.Messages;
 import com.shatteredpixel.shatteredpixeldungeon.sprites.CharSprite;
@@ -34,7 +35,14 @@ public class Healing extends Buff {
 	
 	private float percentHealPerTick;
 	private int flatHealPerTick;
-	
+
+	@Override
+	public boolean attachTo(Char target) {
+		Buff.detach( target, Infection.class );
+
+		return super.attachTo(target);
+	}
+
 	{
 		//unlike other buffs, this one acts after the hero and takes priority against other effects
 		//healing is much more useful if you get some of it off before taking damage

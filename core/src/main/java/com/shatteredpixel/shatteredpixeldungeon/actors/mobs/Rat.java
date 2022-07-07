@@ -23,6 +23,9 @@ package com.shatteredpixel.shatteredpixeldungeon.actors.mobs;
 
 import com.shatteredpixel.shatteredpixeldungeon.Dungeon;
 import com.shatteredpixel.shatteredpixeldungeon.actors.Char;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Bleeding;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Buff;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Healing;
 import com.shatteredpixel.shatteredpixeldungeon.actors.hero.abilities.Ratmogrify;
 import com.shatteredpixel.shatteredpixeldungeon.sprites.RatSprite;
 import com.watabou.utils.Bundle;
@@ -38,6 +41,16 @@ public class Rat extends Mob {
 		
 		maxLvl = 5;
 	}
+
+	//@Override
+	//public int attackProc( Char enemy, int damage ) {
+	//	damage = super.attackProc( enemy, damage );
+	//	if (Random.Int( 2 ) == 0) {
+	//		Buff.affect(enemy, Healing.class).setHeal((int) (0.8f * enemy.HT + 14), 0.25f, 0);
+	//	}
+    //
+	//	return damage;
+	//}
 
 	@Override
 	protected boolean act() {
