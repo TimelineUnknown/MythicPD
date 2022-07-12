@@ -21,30 +21,39 @@
 
 package com.shatteredpixel.shatteredpixeldungeon.actors.mobs;
 
+import com.badlogic.gdx.graphics.g3d.particles.values.PrimitiveSpawnShapeValue;
 import com.shatteredpixel.shatteredpixeldungeon.Badges;
 import com.shatteredpixel.shatteredpixeldungeon.Challenges;
 import com.shatteredpixel.shatteredpixeldungeon.Dungeon;
 import com.shatteredpixel.shatteredpixeldungeon.Statistics;
 import com.shatteredpixel.shatteredpixeldungeon.actors.Actor;
 import com.shatteredpixel.shatteredpixeldungeon.actors.Char;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Bleeding;
 import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Buff;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Infection;
 import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.LockedFloor;
 import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Ooze;
 import com.shatteredpixel.shatteredpixeldungeon.effects.Speck;
+import com.shatteredpixel.shatteredpixeldungeon.items.Ankh;
+import com.shatteredpixel.shatteredpixeldungeon.items.Item;
 import com.shatteredpixel.shatteredpixeldungeon.items.artifacts.DriedRose;
 import com.shatteredpixel.shatteredpixeldungeon.items.keys.SkeletonKey;
+import com.shatteredpixel.shatteredpixeldungeon.items.potions.PotionOfHealing;
 import com.shatteredpixel.shatteredpixeldungeon.items.quest.GooBlob;
 import com.shatteredpixel.shatteredpixeldungeon.mechanics.Ballistica;
 import com.shatteredpixel.shatteredpixeldungeon.messages.Messages;
 import com.shatteredpixel.shatteredpixeldungeon.scenes.GameScene;
 import com.shatteredpixel.shatteredpixeldungeon.sprites.CharSprite;
 import com.shatteredpixel.shatteredpixeldungeon.sprites.GooSprite;
+import com.shatteredpixel.shatteredpixeldungeon.sprites.MimicSprite;
 import com.shatteredpixel.shatteredpixeldungeon.ui.BossHealthBar;
 import com.shatteredpixel.shatteredpixeldungeon.utils.GLog;
 import com.watabou.noosa.Camera;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.PathFinder;
 import com.watabou.utils.Random;
+
+import java.util.ArrayList;
 
 public class Goo extends Mob {
 
@@ -148,6 +157,15 @@ public class Goo extends Mob {
 		if (Random.Int( 3 ) == 0) {
 			Buff.affect( enemy, Ooze.class ).set( Ooze.DURATION );
 			enemy.sprite.burst( 0x000000, 5 );
+
+			{
+				/*damage = super.attackProc( enemy, damage );
+				if (Random.Int( 2 ) == 0) {
+					Buff.affect( enemy, Infection.class );
+				}
+
+				return damage;*/
+			}
 		}
 
 		if (pumpedUp > 0) {
@@ -156,6 +174,8 @@ public class Goo extends Mob {
 
 		return damage;
 	}
+
+
 
 	@Override
 	public void updateSpriteState() {
@@ -283,6 +303,13 @@ public class Goo extends Mob {
 		Statistics.bossScores[0] = Math.min(1000, Statistics.bossScores[0]);
 		
 		yell( Messages.get(this, "defeated") );
+
+		Ankh ankh = new Ankh();
+		ObsidianMimic.spawnAt(pos, ankh);
+		Mimic mimic = Mimic.spawnAt(pos, ankh, ObsidianMimic.class);
+		mimic.stopHiding();
+		GameScene.add(mimic);
+
 	}
 	
 	@Override

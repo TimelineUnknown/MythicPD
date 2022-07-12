@@ -23,6 +23,7 @@ package com.shatteredpixel.shatteredpixeldungeon.levels.rooms.secret;
 
 import com.shatteredpixel.shatteredpixeldungeon.Dungeon;
 import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Bee;
+import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Wasp;
 import com.shatteredpixel.shatteredpixeldungeon.items.Honeypot;
 import com.shatteredpixel.shatteredpixeldungeon.items.Item;
 import com.shatteredpixel.shatteredpixeldungeon.items.bombs.Bomb;
@@ -51,6 +52,12 @@ public class SecretHoneypotRoom extends SecretRoom {
 		bee.HP = bee.HT;
 		bee.pos = level.pointToCell(brokenPotPos);
 		level.mobs.add( bee );
+
+		Wasp wasp = new Wasp();
+		wasp.spawn( Dungeon.depth );
+		wasp.HP = wasp.HT;
+		wasp.pos = level.pointToCell(brokenPotPos);
+		level.mobs.add( wasp );
 		
 		bee.setPotInfo(level.pointToCell(brokenPotPos), null);
 		

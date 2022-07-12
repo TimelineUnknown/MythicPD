@@ -49,6 +49,7 @@ import com.shatteredpixel.shatteredpixeldungeon.effects.particles.BlastParticle;
 import com.shatteredpixel.shatteredpixeldungeon.effects.particles.FlameParticle;
 import com.shatteredpixel.shatteredpixeldungeon.effects.particles.SmokeParticle;
 import com.shatteredpixel.shatteredpixeldungeon.effects.particles.SparkParticle;
+import com.shatteredpixel.shatteredpixeldungeon.items.Ankh;
 import com.shatteredpixel.shatteredpixeldungeon.items.Heap;
 import com.shatteredpixel.shatteredpixeldungeon.items.Item;
 import com.shatteredpixel.shatteredpixeldungeon.items.TengusMask;
@@ -221,6 +222,13 @@ public class Tengu extends Mob {
 		}
 		
 		yell( Messages.get(this, "defeated") );
+
+		Ankh ankh = new Ankh();
+		ObsidianMimic.spawnAt(pos, ankh);
+		Mimic mimic = Mimic.spawnAt(pos, ankh, ObsidianMimic.class);
+		mimic.stopHiding();
+		GameScene.add(mimic);
+
 	}
 	
 	@Override

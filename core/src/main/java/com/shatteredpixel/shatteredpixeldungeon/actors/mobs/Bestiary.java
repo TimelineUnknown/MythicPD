@@ -216,6 +216,8 @@ public class Bestiary {
 				Class<? extends Mob> cl = rotation.get(i);
 				if (cl == Rat.class) {
 					cl = Albino.class;
+				} if (cl == Rat.class) {
+					cl = HunterRat.class;
 				} else if (cl == Slime.class) {
 					cl = CausticSlime.class;
 				} else if (cl == Thief.class) {

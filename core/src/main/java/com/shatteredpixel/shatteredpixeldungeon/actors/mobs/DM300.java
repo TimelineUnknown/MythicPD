@@ -48,6 +48,7 @@ import com.shatteredpixel.shatteredpixeldungeon.effects.CellEmitter;
 import com.shatteredpixel.shatteredpixeldungeon.effects.Speck;
 import com.shatteredpixel.shatteredpixeldungeon.effects.particles.EarthParticle;
 import com.shatteredpixel.shatteredpixeldungeon.effects.particles.SparkParticle;
+import com.shatteredpixel.shatteredpixeldungeon.items.Ankh;
 import com.shatteredpixel.shatteredpixeldungeon.items.artifacts.DriedRose;
 import com.shatteredpixel.shatteredpixeldungeon.items.artifacts.LloydsBeacon;
 import com.shatteredpixel.shatteredpixeldungeon.items.quest.MetalShard;
@@ -553,6 +554,13 @@ public class DM300 extends Mob {
 		}
 
 		yell( Messages.get(this, "defeated") );
+
+		Ankh ankh = new Ankh();
+		ObsidianMimic.spawnAt(pos, ankh);
+		Mimic mimic = Mimic.spawnAt(pos, ankh, ObsidianMimic.class);
+		mimic.stopHiding();
+		GameScene.add(mimic);
+
 	}
 
 	@Override

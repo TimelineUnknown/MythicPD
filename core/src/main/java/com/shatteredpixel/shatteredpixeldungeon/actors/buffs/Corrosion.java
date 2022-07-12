@@ -23,6 +23,7 @@ package com.shatteredpixel.shatteredpixeldungeon.actors.buffs;
 
 import com.shatteredpixel.shatteredpixeldungeon.Badges;
 import com.shatteredpixel.shatteredpixeldungeon.Dungeon;
+import com.shatteredpixel.shatteredpixeldungeon.actors.Char;
 import com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero;
 import com.shatteredpixel.shatteredpixeldungeon.items.wands.WandOfCorrosion;
 import com.shatteredpixel.shatteredpixeldungeon.messages.Messages;
@@ -46,6 +47,13 @@ public class Corrosion extends Buff implements Hero.Doom {
 	{
 		type = buffType.NEGATIVE;
 		announced = true;
+	}
+
+	@Override
+	public boolean attachTo(Char target) {
+		Buff.detach( target, Infection.class );
+
+		return super.attachTo(target);
 	}
 
 	@Override

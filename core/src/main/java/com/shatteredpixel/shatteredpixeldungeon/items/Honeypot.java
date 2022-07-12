@@ -27,6 +27,7 @@ import com.shatteredpixel.shatteredpixeldungeon.actors.Actor;
 import com.shatteredpixel.shatteredpixeldungeon.actors.Char;
 import com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero;
 import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Bee;
+import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Wasp;
 import com.shatteredpixel.shatteredpixeldungeon.effects.Pushing;
 import com.shatteredpixel.shatteredpixeldungeon.effects.Splash;
 import com.shatteredpixel.shatteredpixeldungeon.scenes.GameScene;
@@ -118,9 +119,18 @@ public class Honeypot extends Item {
 			bee.setPotInfo( pos, owner );
 			bee.HP = bee.HT;
 			bee.pos = newPos;
+
+			Wasp wasp = new Wasp();
+			wasp.spawn( Dungeon.scalingDepth() );
+			wasp.setPotInfo(pos, owner);
+			wasp.HP = wasp.HT;
+			wasp.pos = newPos;
 			
 			GameScene.add( bee );
 			Actor.addDelayed( new Pushing( bee, pos, newPos ), -1f );
+
+			GameScene.add( wasp );
+			Actor.addDelayed( new Pushing( wasp, pos, newPos ), -1f );
 			
 			bee.sprite.alpha( 0 );
 			bee.sprite.parent.add( new AlphaTweener( bee.sprite, 1, 0.15f ) );

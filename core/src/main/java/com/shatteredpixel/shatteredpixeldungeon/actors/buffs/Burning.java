@@ -62,7 +62,7 @@ public class Burning extends Buff implements Hero.Doom {
 		type = buffType.NEGATIVE;
 		announced = true;
 	}
-	
+
 	@Override
 	public void storeInBundle( Bundle bundle ) {
 		super.storeInBundle( bundle );
@@ -80,6 +80,7 @@ public class Burning extends Buff implements Hero.Doom {
 	@Override
 	public boolean attachTo(Char target) {
 		Buff.detach( target, Chill.class);
+		Buff.detach( target, Infection.class );
 
 		return super.attachTo(target);
 	}

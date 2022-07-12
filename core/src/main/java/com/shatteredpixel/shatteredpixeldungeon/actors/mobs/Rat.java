@@ -21,72 +21,67 @@
 
 package com.shatteredpixel.shatteredpixeldungeon.actors.mobs;
 
+import com.shatteredpixel.shatteredpixeldungeon.Challenges;
 import com.shatteredpixel.shatteredpixeldungeon.Dungeon;
 import com.shatteredpixel.shatteredpixeldungeon.actors.Char;
-import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Bleeding;
-import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Buff;
-import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Healing;
 import com.shatteredpixel.shatteredpixeldungeon.actors.hero.abilities.Ratmogrify;
+import com.shatteredpixel.shatteredpixeldungeon.items.Ankh;
+import com.shatteredpixel.shatteredpixeldungeon.items.Generator;
+import com.shatteredpixel.shatteredpixeldungeon.items.Gold;
+import com.shatteredpixel.shatteredpixeldungeon.items.Item;
+import com.shatteredpixel.shatteredpixeldungeon.items.potions.PotionOfHealing;
+import com.shatteredpixel.shatteredpixeldungeon.scenes.GameScene;
 import com.shatteredpixel.shatteredpixeldungeon.sprites.RatSprite;
 import com.watabou.utils.Bundle;
 import com.watabou.utils.Random;
 
+import java.util.ArrayList;
+
 public class Rat extends Mob {
 
-	{
-		spriteClass = RatSprite.class;
-		
-		HP = HT = 8;
-		defenseSkill = 2;
-		
-		maxLvl = 5;
-	}
+    {
+        spriteClass = RatSprite.class;
+        HP = HT = 8;
+        defenseSkill = 2;
+        maxLvl = 5;
+    }
 
-	//@Override
-	//public int attackProc( Char enemy, int damage ) {
-	//	damage = super.attackProc( enemy, damage );
-	//	if (Random.Int( 2 ) == 0) {
-	//		Buff.affect(enemy, Healing.class).setHeal((int) (0.8f * enemy.HT + 14), 0.25f, 0);
-	//	}
-    //
-	//	return damage;
-	//}
+    @Override
+    protected boolean act() {
+        if (Dungeon.level.heroFOV[pos] && Dungeon.hero.armorAbility instanceof Ratmogrify) {
+            alignment = Alignment.ALLY;
+            if (state == SLEEPING) state = WANDERING;
+        }
+        return super.act();
+    }
 
-	@Override
-	protected boolean act() {
-		if (Dungeon.level.heroFOV[pos] && Dungeon.hero.armorAbility instanceof Ratmogrify){
-			alignment = Alignment.ALLY;
-			if (state == SLEEPING) state = WANDERING;
-		}
-		return super.act();
-	}
+    @Override
+    public int damageRoll() {
+        return Random.NormalIntRange(1, 4);
+    }
 
-	@Override
-	public int damageRoll() {
-		return Random.NormalIntRange( 1, 4 );
-	}
-	
-	@Override
-	public int attackSkill( Char target ) {
-		return 8;
-	}
-	
-	@Override
-	public int drRoll() {
-		return Random.NormalIntRange(0, 1);
-	}
+    @Override
+    public int attackSkill(Char target) {
+        return 8;
+    }
 
-	private static final String RAT_ALLY = "rat_ally";
+    @Override
+    public int drRoll() {
+        return Random.NormalIntRange(0, 1);
+    }
 
-	@Override
-	public void storeInBundle(Bundle bundle) {
-		super.storeInBundle(bundle);
-		if (alignment == Alignment.ALLY) bundle.put(RAT_ALLY, true);
-	}
+    private static final String RAT_ALLY = "rat_ally";
 
-	@Override
-	public void restoreFromBundle(Bundle bundle) {
-		super.restoreFromBundle(bundle);
-		if (bundle.contains(RAT_ALLY)) alignment = Alignment.ALLY;
-	}
+    @Override
+    public void storeInBundle(Bundle bundle) {
+        super.storeInBundle(bundle);
+        if (alignment == Alignment.ALLY) bundle.put(RAT_ALLY, true);
+    }
+
+    @Override
+    public void restoreFromBundle(Bundle bundle) {
+        super.restoreFromBundle(bundle);
+        if (bundle.contains(RAT_ALLY)) alignment = Alignment.ALLY;
+    }
+
 }
