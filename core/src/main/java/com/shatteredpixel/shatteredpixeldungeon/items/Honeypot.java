@@ -124,7 +124,7 @@ public class Honeypot extends Item {
 			wasp.spawn( Dungeon.scalingDepth() );
 			wasp.setPotInfo(pos, owner);
 			wasp.HP = wasp.HT;
-			wasp.pos = newPos;
+			wasp.pos = newPos -1;
 			
 			GameScene.add( bee );
 			Actor.addDelayed( new Pushing( bee, pos, newPos ), -1f );

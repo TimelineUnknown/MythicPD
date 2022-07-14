@@ -62,6 +62,13 @@ public class Bee extends Mob {
 	private static final String POTPOS	    = "potpos";
 	private static final String POTHOLDER	= "potholder";
 	private static final String ALIGMNENT   = "alignment";
+
+	@Override
+	public int drRoll() {
+		return Random.NormalIntRange(0, 1);
+	}
+
+	private static final String WASP_ALLY = "wasp_ally";
 	
 	@Override
 	public void storeInBundle( Bundle bundle ) {
@@ -70,6 +77,8 @@ public class Bee extends Mob {
 		bundle.put( POTPOS, potPos );
 		bundle.put( POTHOLDER, potHolder );
 		bundle.put( ALIGMNENT, alignment);
+		super.storeInBundle(bundle);
+		if (alignment == Alignment.ALLY) bundle.put(WASP_ALLY, true);
 	}
 	
 	@Override
@@ -79,6 +88,8 @@ public class Bee extends Mob {
 		potPos = bundle.getInt( POTPOS );
 		potHolder = bundle.getInt( POTHOLDER );
 		if (bundle.contains(ALIGMNENT)) alignment = bundle.getEnum( ALIGMNENT, Alignment.class);
+		super.restoreFromBundle(bundle);
+		if (bundle.contains(WASP_ALLY)) alignment = Alignment.ALLY;
 	}
 	
 	public void spawn( int level ) {
@@ -159,7 +170,8 @@ public class Bee extends Mob {
 							&& Dungeon.level.distance(mob.pos, potPos) <= 3
 							&& mob.alignment != Alignment.NEUTRAL
 							&& !mob.isInvulnerable(getClass())
-							&& !(alignment == Alignment.ALLY && mob.alignment == Alignment.ALLY)) {
+							&& !(alignment == Alignment.ALLY && mob.alignment == Alignment.ALLY)
+							&& mob.getClass() != Wasp.class) {
 						enemies.add(mob);
 					}
 				}
@@ -201,4 +213,5 @@ public class Bee extends Mob {
 			return super.description();
 		}
 	}
+
 }

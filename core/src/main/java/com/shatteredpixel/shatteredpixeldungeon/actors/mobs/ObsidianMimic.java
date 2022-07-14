@@ -62,6 +62,8 @@ public class ObsidianMimic extends Mimic {
     {
         spriteClass = MimicSprite.Black.class;
         properties.add(Property.IMMOVABLE);
+
+        flying = true;
     }
 
     @Override

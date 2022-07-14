@@ -57,12 +57,14 @@ public class Bestiary {
 						Snake.class,
 						Gnoll.class, Gnoll.class, Gnoll.class,
 						Swarm.class,
+						FallenAdventurer.class,
 						Crab.class));
 			case 4: case 5:
 				//1x gnoll, 1x swarm, 2x crab, 2x slime
 				return new ArrayList<>(Arrays.asList(Gnoll.class,
 						Swarm.class,
 						Crab.class, Crab.class,
+						FallenAdventurer.class, FallenAdventurer.class,
 						Slime.class, Slime.class));
 				
 			// Prison
@@ -70,12 +72,14 @@ public class Bestiary {
 				//3x skeleton, 1x thief, 1x swarm
 				return new ArrayList<>(Arrays.asList(Skeleton.class, Skeleton.class, Skeleton.class,
 						Thief.class,
+						FallenAdventurer.class,
 						Swarm.class));
 			case 7:
 				//3x skeleton, 1x thief, 1x DM-100, 1x guard
 				return new ArrayList<>(Arrays.asList(Skeleton.class, Skeleton.class, Skeleton.class,
 						Thief.class,
 						DM100.class,
+						FallenAdventurer.class,
 						Guard.class));
 			case 8:
 				//2x skeleton, 1x thief, 2x DM-100, 2x guard, 1x necromancer
@@ -83,6 +87,7 @@ public class Bestiary {
 						Thief.class,
 						DM100.class, DM100.class,
 						Guard.class, Guard.class,
+						FallenAdventurer.class, FallenAdventurer.class,
 						Necromancer.class));
 			case 9: case 10:
 				//1x skeleton, 1x thief, 2x DM-100, 2x guard, 2x necromancer
@@ -90,6 +95,7 @@ public class Bestiary {
 						Thief.class,
 						DM100.class, DM100.class,
 						Guard.class, Guard.class,
+						FallenAdventurer.class, FallenAdventurer.class,
 						Necromancer.class, Necromancer.class));
 				
 			// Caves
@@ -98,6 +104,7 @@ public class Bestiary {
 				return new ArrayList<>(Arrays.asList(
 						Bat.class, Bat.class, Bat.class,
 						Brute.class,
+						FallenAdventurer.class,
 						Shaman.random()));
 			case 12:
 				//2x bat, 2x brute, 1x shaman, 1x spinner
