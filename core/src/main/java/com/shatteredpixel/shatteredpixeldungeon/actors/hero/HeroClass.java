@@ -46,6 +46,7 @@ import com.shatteredpixel.shatteredpixeldungeon.items.armor.ClothArmor;
 import com.shatteredpixel.shatteredpixeldungeon.items.artifacts.CloakOfShadows;
 import com.shatteredpixel.shatteredpixeldungeon.items.bags.VelvetPouch;
 import com.shatteredpixel.shatteredpixeldungeon.items.food.Food;
+import com.shatteredpixel.shatteredpixeldungeon.items.potions.PotionOfHaste;
 import com.shatteredpixel.shatteredpixeldungeon.items.potions.PotionOfHealing;
 import com.shatteredpixel.shatteredpixeldungeon.items.potions.PotionOfInvisibility;
 import com.shatteredpixel.shatteredpixeldungeon.items.potions.PotionOfLiquidFlame;
@@ -53,6 +54,7 @@ import com.shatteredpixel.shatteredpixeldungeon.items.potions.PotionOfMindVision
 import com.shatteredpixel.shatteredpixeldungeon.items.scrolls.ScrollOfIdentify;
 import com.shatteredpixel.shatteredpixeldungeon.items.scrolls.ScrollOfLullaby;
 import com.shatteredpixel.shatteredpixeldungeon.items.scrolls.ScrollOfMagicMapping;
+import com.shatteredpixel.shatteredpixeldungeon.items.scrolls.ScrollOfMirrorImage;
 import com.shatteredpixel.shatteredpixeldungeon.items.scrolls.ScrollOfRage;
 import com.shatteredpixel.shatteredpixeldungeon.items.scrolls.ScrollOfUpgrade;
 import com.shatteredpixel.shatteredpixeldungeon.items.scrolls.exotic.ScrollOfDivination;
@@ -72,7 +74,8 @@ public enum HeroClass {
 	WARRIOR( HeroSubClass.BERSERKER, HeroSubClass.GLADIATOR ),
 	MAGE( HeroSubClass.BATTLEMAGE, HeroSubClass.WARLOCK ),
 	ROGUE( HeroSubClass.ASSASSIN, HeroSubClass.FREERUNNER ),
-	HUNTRESS( HeroSubClass.SNIPER, HeroSubClass.WARDEN );
+	HUNTRESS( HeroSubClass.SNIPER, HeroSubClass.WARDEN ),
+	TENGU( HeroSubClass.BATTLEMAGE, HeroSubClass.WARLOCK );
 
 	private HeroSubClass[] subClasses;
 
@@ -115,6 +118,10 @@ public enum HeroClass {
 			case HUNTRESS:
 				initHuntress( hero );
 				break;
+
+			case TENGU:
+				initTengu( hero );
+				break;
 		}
 
 		for (int s = 0; s < QuickSlot.SIZE; s++){
@@ -136,6 +143,8 @@ public enum HeroClass {
 				return Badges.Badge.MASTERY_ROGUE;
 			case HUNTRESS:
 				return Badges.Badge.MASTERY_HUNTRESS;
+			case TENGU:
+				return Badges.Badge.MASTERY_TENGU;
 		}
 		return null;
 	}
@@ -197,6 +206,17 @@ public enum HeroClass {
 		new ScrollOfLullaby().identify();
 	}
 
+	private static void initTengu( Hero hero ) {
+		(hero.belongings.weapon = new Gloves()).identify();
+		ThrowingKnife knives = new ThrowingKnife();
+		knives.quantity(3).collect();
+
+		Dungeon.quickslot.setSlot(0, knives);
+
+		new ScrollOfMirrorImage().identify();
+		new PotionOfHaste().identify();
+	}
+
 	public String title() {
 		return Messages.get(HeroClass.class, name());
 	}
@@ -219,6 +239,8 @@ public enum HeroClass {
 				return new ArmorAbility[]{new SmokeBomb(), new DeathMark(), new ShadowClone()};
 			case HUNTRESS:
 				return new ArmorAbility[]{new SpectralBlades(), new NaturesPower(), new SpiritHawk()};
+			case TENGU:
+				return new ArmorAbility[]{new SmokeBomb(), new DeathMark(), new ShadowClone()};
 		}
 	}
 
@@ -232,6 +254,8 @@ public enum HeroClass {
 				return Assets.Sprites.ROGUE;
 			case HUNTRESS:
 				return Assets.Sprites.HUNTRESS;
+			case TENGU:
+				return Assets.Sprites.TENGU2;
 		}
 	}
 
@@ -245,6 +269,8 @@ public enum HeroClass {
 				return Assets.Splashes.ROGUE;
 			case HUNTRESS:
 				return Assets.Splashes.HUNTRESS;
+			case TENGU:
+				return Assets.Splashes.MAGE;
 		}
 	}
 	
@@ -282,6 +308,14 @@ public enum HeroClass {
 						Messages.get(HeroClass.class, "huntress_perk4"),
 						Messages.get(HeroClass.class, "huntress_perk5"),
 				};
+			case TENGU:
+				return new String[]{
+						Messages.get(HeroClass.class, "mage_perk1"),
+						Messages.get(HeroClass.class, "mage_perk2"),
+						Messages.get(HeroClass.class, "mage_perk3"),
+						Messages.get(HeroClass.class, "mage_perk4"),
+						Messages.get(HeroClass.class, "mage_perk5"),
+				};
 		}
 	}
 	
@@ -298,6 +332,8 @@ public enum HeroClass {
 				return Badges.isUnlocked(Badges.Badge.UNLOCK_ROGUE);
 			case HUNTRESS:
 				return Badges.isUnlocked(Badges.Badge.UNLOCK_HUNTRESS);
+			case TENGU:
+				return Badges.isUnlocked(Badges.Badge.UNLOCK_TENGU);
 		}
 	}
 	

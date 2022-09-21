@@ -49,7 +49,7 @@ public class FallenAdventurer extends Mob {
 		defenseSkill = 5;
 		
 		EXP = 5;
-		maxLvl = 10;
+		maxLvl = 7;
 
 		loot = Generator.Category.WEAPON;
 		lootChance = 0.1667f; //by default, see lootChance()
@@ -69,7 +69,7 @@ public class FallenAdventurer extends Mob {
 	
 	@Override
 	public int damageRoll() {
-		return Random.NormalIntRange( 2, 10 );
+		return Random.NormalIntRange( 2, 6 );
 	}
 	
 	@Override

@@ -46,10 +46,13 @@ public enum Icons {
 	MAGE,
 	ROGUE,
 	HUNTRESS,
+	TENGU,
 
 	//grey icons, mainly used for buttons, spacing for 16x16
 	EXIT,
-	DISPLAY, //2 separate images, changes based on orientation
+	DISPLAY,
+
+	//2 separate images, changes based on orientation
 	DISPLAY_LAND,
 	DISPLAY_PORT,
 	DATA,
@@ -96,7 +99,9 @@ public enum Icons {
 	SLEEP,
 	ALERT,
 	LOST,
-	DEPTH,      //depth icons have two variants, for regular and seeded runs
+	DEPTH,
+
+	//depth icons have two variants, for regular and seeded runs
 	DEPTH_CHASM,
 	DEPTH_WATER,
 	DEPTH_GRASS,
@@ -163,6 +168,9 @@ public enum Icons {
 				break;
 			case HUNTRESS:
 				icon.frame( icon.texture.uvRectBySize( 64, 16, 16, 16 ) );
+				break;
+			case TENGU:
+				icon.frame( icon.texture.uvRectBySize( 16, 16, 12, 15 ) );
 				break;
 
 			case EXIT:
@@ -384,7 +392,9 @@ public enum Icons {
 			return get( ROGUE );
 		case HUNTRESS:
 			return get( HUNTRESS );
-		default:
+			case TENGU:
+				return get( TENGU );
+			default:
 			return null;
 		}
 	}
