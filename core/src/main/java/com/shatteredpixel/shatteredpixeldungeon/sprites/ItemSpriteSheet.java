@@ -206,6 +206,8 @@ public class ItemSpriteSheet {
 	public static final int RAPIER          = WEP_TIER1+3;
 	public static final int DAGGER          = WEP_TIER1+4;
 	public static final int MAGES_STAFF     = WEP_TIER1+5;
+	public static final int FLINT_SPEAR     = WEP_TIER1+6;
+	public static final int FORGE_TOOLS = WEP_TIER1+7;
 	static{
 		assignItemRect(WORN_SHORTSWORD, 13, 13);
 		assignItemRect(GLOVES,          12, 16);
