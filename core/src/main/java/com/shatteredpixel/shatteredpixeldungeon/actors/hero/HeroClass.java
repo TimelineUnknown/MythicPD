@@ -41,6 +41,7 @@ import com.shatteredpixel.shatteredpixeldungeon.actors.hero.abilities.warrior.Sh
 import com.shatteredpixel.shatteredpixeldungeon.actors.hero.abilities.warrior.Endure;
 import com.shatteredpixel.shatteredpixeldungeon.items.BrokenSeal;
 import com.shatteredpixel.shatteredpixeldungeon.items.Item;
+import com.shatteredpixel.shatteredpixeldungeon.items.KingsCrown;
 import com.shatteredpixel.shatteredpixeldungeon.items.Waterskin;
 import com.shatteredpixel.shatteredpixeldungeon.items.armor.ClothArmor;
 import com.shatteredpixel.shatteredpixeldungeon.items.artifacts.CloakOfShadows;
@@ -61,6 +62,8 @@ import com.shatteredpixel.shatteredpixeldungeon.items.wands.StaffOfProjectiles;
 import com.shatteredpixel.shatteredpixeldungeon.items.wands.WandOfMagicMissile;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.SpiritBow;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Dagger;
+import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.FlintSpear;
+import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.ForgeHammers;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Gloves;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.MagesStaff;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.WornShortsword;
@@ -207,10 +210,13 @@ public enum HeroClass {
 	}
 
 	private static void initTengu( Hero hero ) {
-		(hero.belongings.weapon = new Gloves()).identify();
+		(hero.belongings.weapon = new FlintSpear()).identify();
 
 		StaffOfProjectiles staff = new StaffOfProjectiles();
 		staff.identify().collect();
+
+		KingsCrown item = new KingsCrown();
+		item.identify().collect();
 
 		Dungeon.quickslot.setSlot(0, staff);
 

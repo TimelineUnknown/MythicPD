@@ -110,6 +110,9 @@ abstract public class ClassArmor extends Armor {
 		case HUNTRESS:
 			classArmor = new HuntressArmor();
 			break;
+			case TENGU:
+				classArmor = new TenguArmor();
+				break;
 		}
 		
 		classArmor.level(armor.trueLevel());
