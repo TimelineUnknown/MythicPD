@@ -276,6 +276,8 @@ public enum HeroClass {
 				return Assets.Splashes.ROGUE;
 			case HUNTRESS:
 				return Assets.Splashes.HUNTRESS;
+			case TENGU:
+				return Assets.Splashes.TENGU;
 		}
 	}
 	
