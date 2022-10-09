@@ -45,21 +45,26 @@ public class HeroIcon extends Image {
 	public static final int FREERUNNER  = 5;
 	public static final int SNIPER      = 6;
 	public static final int WARDEN      = 7;
+	public static final int HOLY_KNIGHT = 8;
+	public static final int MIND_FLAIR  = 9;
 
 	//abilities
-	public static final int HEROIC_LEAP     = 8;
-	public static final int SHOCKWAVE       = 9;
-	public static final int ENDURE          = 10;
-	public static final int ELEMENTAL_BLAST = 11;
-	public static final int WILD_MAGIC      = 12;
-	public static final int WARP_BEACON     = 13;
-	public static final int SMOKE_BOMB      = 14;
-	public static final int DEATH_MARK      = 15;
-	public static final int SHADOW_CLONE    = 16;
-	public static final int SPECTRAL_BLADES = 17;
-	public static final int NATURES_POWER   = 18;
-	public static final int SPIRIT_HAWK     = 19;
-	public static final int RATMOGRIFY      = 20;
+	public static final int HEROIC_LEAP     = 10;
+	public static final int SHOCKWAVE       = 11;
+	public static final int ENDURE          = 12;
+	public static final int ELEMENTAL_BLAST = 13;
+	public static final int WILD_MAGIC      = 14;
+	public static final int WARP_BEACON     = 15;
+	public static final int SMOKE_BOMB      = 16;
+	public static final int DEATH_MARK      = 17;
+	public static final int SHADOW_CLONE    = 18;
+	public static final int SPECTRAL_BLADES = 19;
+	public static final int NATURES_POWER   = 20;
+	public static final int SPIRIT_HAWK     = 21;
+	public static final int TENGU_BOMBS     = 22;
+	public static final int SMOKE_SCREEN    = 23;
+	public static final int ESCAPE_ROUT     = 24;
+	public static final int RATMOGRIFY      = 25;
 
 	public HeroIcon(HeroSubClass subCls){
 		super( Assets.Interfaces.HERO_ICONS );

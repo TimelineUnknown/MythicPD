@@ -151,7 +151,7 @@ public enum Talent {
 	OBSCAVATING_MEAL(132), SAFE_SEARCHING(133), FORGOTTEN_SECRETS(134), MEDITATION(135), MASTERY_OF_PRESERVATION(136),
 	//Tengu T3
 	GREATER_POWER(137, 3), GREATER_PRACTICE(138, 3),
-	//Holly Knight T3
+	//Holy Knight T3
 	DEVINE_RETRIBUTION(139, 3), DEVINE_FOCUS(140, 3), DEVINE_BLESSING(141, 3),
 	//Mind Flair T3
 	TWISTED_VISION(142, 3), MIND_BENDER(143, 3), CORRUPTED_SPIRIT(144, 3),
@@ -263,6 +263,8 @@ public enum Talent {
 					return 90;
 				case HUNTRESS:
 					return 122;
+                case TENGU:
+                    return 154;
 			}
 		} else {
 			return icon;
@@ -581,6 +583,8 @@ public enum Talent {
 			case HUNTRESS:
 				Collections.addAll(tierTalents, NATURES_BOUNTY, SURVIVALISTS_INTUITION, FOLLOWUP_STRIKE, NATURES_AID);
 				break;
+			case TENGU:
+				Collections.addAll(tierTalents, FOCUSING_MEAL, REFINE_MEMORY, KNOWLEDGE_IS_FOCUS, MASTERY_OF_AIM);
 		}
 		for (Talent talent : tierTalents){
 			if (replacements.containsKey(talent)){
@@ -604,6 +608,8 @@ public enum Talent {
 			case HUNTRESS:
 				Collections.addAll(tierTalents, INVIGORATING_MEAL, RESTORED_NATURE, REJUVENATING_STEPS, HEIGHTENED_SENSES, DURABLE_PROJECTILES);
 				break;
+			case TENGU:
+				Collections.addAll(tierTalents, OBSCAVATING_MEAL, SAFE_SEARCHING, FORGOTTEN_SECRETS, MEDITATION, MASTERY_OF_PRESERVATION);
 		}
 		for (Talent talent : tierTalents){
 			if (replacements.containsKey(talent)){
@@ -627,6 +633,8 @@ public enum Talent {
 			case HUNTRESS:
 				Collections.addAll(tierTalents, POINT_BLANK, SEER_SHOT);
 				break;
+			case TENGU:
+				Collections.addAll(tierTalents, GREATER_POWER, GREATER_PRACTICE);
 		}
 		for (Talent talent : tierTalents){
 			if (replacements.containsKey(talent)){
@@ -679,6 +687,8 @@ public enum Talent {
 			case WARDEN:
 				Collections.addAll(tierTalents, DURABLE_TIPS, BARKSKIN, SHIELDING_DEW);
 				break;
+			case HOLY_KINGHT:
+				//Collections.addAll(tierTalents, )
 		}
 		for (Talent talent : tierTalents){
 			talents.get(2).put(talent, 0);
