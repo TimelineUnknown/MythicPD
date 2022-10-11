@@ -42,11 +42,13 @@ import com.shatteredpixel.shatteredpixeldungeon.actors.hero.abilities.warrior.En
 import com.shatteredpixel.shatteredpixeldungeon.items.BrokenSeal;
 import com.shatteredpixel.shatteredpixeldungeon.items.Item;
 import com.shatteredpixel.shatteredpixeldungeon.items.KingsCrown;
+import com.shatteredpixel.shatteredpixeldungeon.items.TengusMask;
 import com.shatteredpixel.shatteredpixeldungeon.items.Waterskin;
 import com.shatteredpixel.shatteredpixeldungeon.items.armor.ClothArmor;
 import com.shatteredpixel.shatteredpixeldungeon.items.artifacts.CloakOfShadows;
 import com.shatteredpixel.shatteredpixeldungeon.items.bags.VelvetPouch;
 import com.shatteredpixel.shatteredpixeldungeon.items.food.Food;
+import com.shatteredpixel.shatteredpixeldungeon.items.potions.PotionOfExperience;
 import com.shatteredpixel.shatteredpixeldungeon.items.potions.PotionOfHealing;
 import com.shatteredpixel.shatteredpixeldungeon.items.potions.PotionOfInvisibility;
 import com.shatteredpixel.shatteredpixeldungeon.items.potions.PotionOfLevitation;
@@ -78,7 +80,7 @@ public enum HeroClass {
 	MAGE( HeroSubClass.BATTLEMAGE, HeroSubClass.WARLOCK ),
 	ROGUE( HeroSubClass.ASSASSIN, HeroSubClass.FREERUNNER ),
 	HUNTRESS( HeroSubClass.SNIPER, HeroSubClass.WARDEN ),
-	TENGU( HeroSubClass.BATTLEMAGE, HeroSubClass.WARLOCK );
+	TENGU( HeroSubClass.HOLY_KINGHT, HeroSubClass.MIND_FLAIR );
 
 	private HeroSubClass[] subClasses;
 
@@ -217,6 +219,12 @@ public enum HeroClass {
 
 		KingsCrown item = new KingsCrown();
 		item.identify().collect();
+
+		TengusMask Item = new TengusMask();
+		Item.identify().collect();
+
+		PotionOfExperience potion = new PotionOfExperience();
+		potion.identify().quantity(31).collect();
 
 		Dungeon.quickslot.setSlot(0, staff);
 

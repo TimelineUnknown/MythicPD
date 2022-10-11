@@ -689,8 +689,10 @@ public enum Talent {
 				break;
 			case HOLY_KINGHT:
 				Collections.addAll(tierTalents, DEVINE_RETRIBUTION, DEVINE_FOCUS, DEVINE_BLESSING);
+				break;
 			case MIND_FLAIR:
 				Collections.addAll(tierTalents, TWISTED_VISION, MIND_BENDER, CORRUPTED_SPIRIT);
+				break;
 		}
 		for (Talent talent : tierTalents){
 			talents.get(2).put(talent, 0);

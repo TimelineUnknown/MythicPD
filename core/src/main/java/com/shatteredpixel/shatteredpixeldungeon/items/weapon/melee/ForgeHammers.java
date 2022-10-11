@@ -32,14 +32,14 @@ public class ForgeHammers extends MeleeWeapon {
 		hitSoundPitch = 1f;
 
 		tier = 1;
-		ACC = 1.20f; //20% boost to accuracy
+		ACC = 1.20f;
 		DLY = 0.5f;
 	}
 
 	@Override
 	public int max(int lvl) {
-		return  Math.round(7*(tier+1)) +        //35 base, up from 25
-				lvl*Math.round(1.6f*(tier+1));  //+8 per level, up from +5
+		return  Math.round(9*(tier+1)) +
+				lvl*Math.round(1.2f*(tier+1));
 	}
 
 }
