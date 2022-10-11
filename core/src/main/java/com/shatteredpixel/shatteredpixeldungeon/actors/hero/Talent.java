@@ -688,7 +688,9 @@ public enum Talent {
 				Collections.addAll(tierTalents, DURABLE_TIPS, BARKSKIN, SHIELDING_DEW);
 				break;
 			case HOLY_KINGHT:
-				//Collections.addAll(tierTalents, )
+				Collections.addAll(tierTalents, DEVINE_RETRIBUTION, DEVINE_FOCUS, DEVINE_BLESSING);
+			case MIND_FLAIR:
+				Collections.addAll(tierTalents, TWISTED_VISION, MIND_BENDER, CORRUPTED_SPIRIT);
 		}
 		for (Talent talent : tierTalents){
 			talents.get(2).put(talent, 0);

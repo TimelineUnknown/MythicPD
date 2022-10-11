@@ -116,7 +116,7 @@ public class PrisonBossLevel extends Level {
 	}
 	
 	private static final String STATE	        = "state";
-	private static final String TENGU	        = "tengu";
+	private static final String TENGU	        = "com/shatteredpixel/shatteredpixeldungeon/actors/hero/abilities/mage/tengu";
 	private static final String STORED_ITEMS    = "storeditems";
 	private static final String TRIGGERED       = "triggered";
 	
